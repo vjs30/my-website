@@ -26,6 +26,7 @@ function changeBackgroundColor() {
   
   // Get the brightness of the new background color
   const brightness = getBrightness(randomColor);
+  console.log(brightness);
   
   // If the background is dark, set the text color to light (white), else dark (black)
   if (brightness < 128) {
