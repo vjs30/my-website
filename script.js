@@ -1,7 +1,7 @@
 // Array of colors for the background
 const colors = [
   '#FF5733', // Red
-  '#33FF57', // Green
+  '#006400', // Dark-Green
   '#3357FF', // Blue
   '#F1C40F', // Yellow
   '#9B59B6', // Purple
