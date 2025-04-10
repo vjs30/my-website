@@ -1,4 +1,3 @@
-
 // Array of colors for the background
 const colors = [
   '#FF5733', // Red
@@ -10,13 +9,30 @@ const colors = [
   '#E74C3C'  // Light Red
 ];
 
-// Function to change the background color
+// Function to calculate the brightness of a color (lighter or darker)
+function getBrightness(color) {
+  const rgb = color.match(/\w\w/g).map(x => parseInt(x, 16));
+  const brightness = 0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2];
+  return brightness;
+}
+
+// Function to change the background color and text color
 function changeBackgroundColor() {
   // Pick a random color from the array
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
   
   // Change the background color of the body
   document.body.style.backgroundColor = randomColor;
+  
+  // Get the brightness of the new background color
+  const brightness = getBrightness(randomColor);
+  
+  // If the background is dark, set the text color to light (white), else dark (black)
+  if (brightness < 128) {
+    document.body.style.color = 'white';  // Light text on dark background
+  } else {
+    document.body.style.color = 'black';  // Dark text on light background
+  }
 }
 
 // Run the function every 60 seconds (60000 milliseconds)
@@ -24,6 +40,7 @@ setInterval(changeBackgroundColor, 60000);
 
 // Call it immediately when the page loads to set the initial color
 changeBackgroundColor();
+
 
 function showQuote() {
   const quotes = [
